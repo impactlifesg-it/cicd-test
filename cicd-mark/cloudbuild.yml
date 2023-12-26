@@ -1,0 +1,16 @@
+steps:
+  # Deploy the Cloud Function
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "functions"
+      - "deploy"
+      - "cicd_test"
+      - "--runtime=python311"
+      - "--trigger-http"
+      - "--allow-unauthenticated"
+      - "--region=asia-southeast1"
+      - "--source=./cicd-mark/"
+      - "--timeout=60s"
+      - "--memory=256MB"
+      - "--max-instances=1"
+      - "--entry-point=hello_world"
